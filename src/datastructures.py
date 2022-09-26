@@ -8,12 +8,39 @@ update this file to implement the following already declared methods:
 """
 from random import randint
 
+def jls_extract_def():
+    return "lucky_numbers"
+
+
 class FamilyStructure:
     def __init__(self, last_name):
-        self.last_name = last_name
+        self.last_name =  "Jackson"
 
         # example list of members
-        self._members = []
+    jls_extract_var = jls_extract_def()
+    self._members = [{
+            "id": self._generateId(),
+            "first_name": "John",
+            "last_name":  self.last_name,
+            "age": 33,
+            jls_extract_var: [7, 13, 22]
+        },
+        {
+            "id": self._generateId(),
+            "first_name": "Jane",
+            "last_name": self.last_name,
+            "age": 35,
+            "lucky_numbers": [10, 14, 3]
+        },
+        {
+            "id": self._generateId(),
+            "first_name": "Jimmy",
+            "last_name": self.last_name,
+            "age": 5,
+            "lucky_numbers": [1]
+        }
+        ]
+
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
@@ -21,15 +48,28 @@ class FamilyStructure:
 
     def add_member(self, member):
         # fill this method and update the return
-        pass
+        member['id']= self._generateId()
+        member['last_name']= self.last_name
+        self._members.append(member)
+
+        return None
+        
 
     def delete_member(self, id):
         # fill this method and update the return
-        pass
+         #Para corregir el index out of range del método pop, incluimos el largo del arreglo de objetos con los miembros de la familia**
+        for person in range (len(self._members)):
+            if self._members[person]['id'] == int(id):
+                self._members.pop(person)
+        return None    
 
     def get_member(self, id):
         # fill this method and update the return
-        pass
+         for person in self._members:
+            if person['id'] == int(id):
+                return person
+
+         return person 
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
