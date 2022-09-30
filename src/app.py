@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from datastructures import FamilyStructure
-#import json
+import json
 #from models import Person
 
 app = Flask(__name__)
